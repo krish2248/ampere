@@ -1,0 +1,32 @@
+# Gradle
+.gradle/
+build/
+app/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+captures/
+local.properties
+
+# Kotlin / JVM
+*.class
+*.jar
+!gradle-wrapper.jar
+hs_err_pid*
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets — never commit
+keystore.properties
+*.jks
+*.keystore
+google-services.json
