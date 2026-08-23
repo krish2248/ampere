@@ -1,5 +1,7 @@
 package dev.ampere.battery.ui.theme
 
+import androidx.compose.ui.graphics.Color
+
 enum class ThemeMode { SYSTEM, LIGHT, DARK }
 
 data class AmpereColors(

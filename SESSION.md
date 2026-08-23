@@ -44,9 +44,9 @@ for all technical decisions; see §0 agent rules, §1 reality check, §11 thresh
 | Working dir | `C:\Users\sonik\Desktop\battery` |
 | JDK | Temurin OpenJDK 17.0.20 (OK) |
 | Android SDK | `C:\Users\sonik\AppData\Local\Android\Sdk` (`ANDROID_HOME` set) |
-| Platforms installed | android-21, android-34, android-36, android-36.1 (**35 not installed - AGP auto-downloads**) |
+| Platforms installed | android-21, **android-35 (auto-installed by AGP, Session 1)**, android-34, android-36, android-36.1 |
 | Build tools | 34.0.0, 36.0.0, 36.1.0, 37.0.0 |
-| Gradle | not global - always use wrapper (`gradlew.bat`) |
+| Gradle | wrapper dist download is BLOCKED for java.exe on this machine - use the manually extracted install: `& "$env:USERPROFILE\.gradle\install\gradle-8.9\bin\gradle.bat" ...` (see §11) |
 | Git / gh | git 2.52.0, gh CLI 2.83.2 logged in as **krish2248** |
 
 ## 4. Workflow protocol (every session)
@@ -79,13 +79,13 @@ Legend: `[x]` done, `[~]` partial, `[ ]` not started
 ### Phase 0 - Skeleton
 - [x] Git repo initialized, .gitignore, README.md
 - [x] SESSION.md continuity file created
-- [x] GitHub repo created and pushed
-- [~] Gradle files (settings, root build, app build, version catalog, gradle.properties)
-- [~] Gradle wrapper set up
-- [~] Manifest per spec §4 + stub classes it references
-- [~] Theme (Color/Theme/Type from §6) + adaptive launcher icon (no PNGs needed at minSdk 29)
-- [~] Nav graph (Routes, AmpereNavHost) + 4 stub screens + AppContainer placeholder
-- [ ] First successful `:app:assembleDebug`
+- [x] GitHub repo created and pushed (https://github.com/krish2248/ampere)
+- [x] Gradle files (settings, root build, app build, version catalog, gradle.properties)
+- [~] Gradle wrapper set up - scripts + properties committed, but wrapper dist download is blocked for java.exe on this machine; regenerate wrapper jar from the official dist next session (§9 step 2)
+- [x] Manifest per spec §4 + stub classes it references (AmpereApp, MainActivity, MonitorService, receivers)
+- [x] Theme (Color/Theme/Type/Palette from §6) + adaptive launcher icon (no PNGs needed at minSdk 29)
+- [x] Nav graph (Routes, AmpereNavHost) + 4 stub screens + AppContainer placeholder
+- [~] First successful `:app:assembleDebug` - NOT yet green. Progress: deps resolve, resources+manifest process fine; compile failed on a missing Color import in Palette.kt (fixed after last build, unverified). Expect possible 1-2 more small compile errors.
 
 ### Phase 1 - hw/ layer + Diagnostics screen FIRST
 - [ ] BatteryIntentSource, BatteryPropertySource, ThermalSource, SysfsReader
@@ -127,29 +127,47 @@ Legend: `[x]` done, `[~]` partial, `[ ]` not started
 **Done:**
 - Read full spec (769 lines). Understood scope, phases, hard rules.
 - Initialized local git repo (`main` branch); wrote `.gitignore`, `README.md`, this `SESSION.md`.
-- Created GitHub repo `krish2248/ampere`, pushed initial state.
-- Built Phase 0 skeleton: Gradle setup with version catalog, manifest, theme colors per spec §6,
-  nav graph, four stub screens, AppContainer, stub classes for manifest entries, adaptive launcher icon.
-- Set up Gradle wrapper (8.9).
+- Created GitHub repo **krish2248/ampere** (public), pushed initial commit (35 files).
+- Built Phase 0 skeleton: version catalog + Gradle files, manifest per spec §4, theme (§6 colors,
+  mono hero typography), bottom-nav with 4 stub screens, AppContainer, adaptive launcher icon
+  (battery + bolt vector on #0C0D10).
+- Fought through a broken network path for the first build:
+  - Wrapper could not download the Gradle dist: java.exe cannot reach services.gradle.org
+    (PowerShell can; no proxy configured - likely firewall blocking java.exe).
+  - Workaround: downloaded gradle-8.9-bin.zip via PowerShell, extracted to
+    `%USERPROFILE%\.gradle\install\gradle-8.9` and invoke that binary directly. Works.
+- First direct build run: AGP auto-installed **Android SDK Platform 35**, all AndroidX deps
+  resolved from Google/Maven (so Java reaches those hosts fine - only services.gradle.org fails).
+- Fixed missing `android.useAndroidX=true` (added `gradle.properties`).
+- Second run got all the way to Kotlin compile; failed on one missing import
+  (`androidx.compose.ui.graphics.Color` in Palette.kt) - fixed after the build, not re-verified yet.
 
 **Decisions:**
-- Repo named `ampere` (matches app id `dev.ampere.battery`); local folder stays `battery`.
+- Repo named `ampere` (matches app id `dev.ampere.battery`); public visibility (user's choice);
+  local folder stays `battery`.
 - Launcher icon = adaptive-icon XML only (minSdk 29 >= 26, no legacy PNGs required).
 - Room/DataStore/Work deps deferred to Phase 3 to keep Phase 0 lean; KSP plugin added then too.
-- compileSdk stays 35 per spec even though only platforms 34/36 exist locally - AGP downloads 35 on first build.
+- compileSdk stays 35 per spec even though only platforms 34/36 existed locally - AGP installed 35 automatically.
 
 **Blockers / notes:**
-- First Gradle run downloads distribution + dependencies -> slow one-time build.
+- Build is NOT green yet: Palette.kt import fixed but unverified; expect possibly another small error or two.
+- Wrapper jar currently in repo came from the Gradle repo tag (newer refactor, different dist-dir scheme).
+  Regenerate canonical 8.9 wrapper files next session (see §9 step 2) so `gradlew` works normally.
 - TODO: confirm S24 model variant (Exynos vs Snapdragon) via Diagnostics screen once app runs.
 
 ---
 
 ## 9. Next steps (resume here)
 
-1. Run first build: `.\gradlew.bat :app:assembleDebug`.
-   If license error: `%LOCALAPPDATA%\Android\Sdk\cmdline-tools\latest\bin\sdkmanager --licenses`
-2. Fix any compile errors in the skeleton until the build is green.
-3. Enable USB debugging on the S24 -> `adb devices` -> install APK -> confirm launch.
+1. Rebuild to green using the direct Gradle binary:
+   `& "$env:USERPROFILE\.gradle\install\gradle-8.9\bin\gradle.bat" :app:assembleDebug`
+   Fix whatever compile errors remain (Palette.kt Color import already fixed post-build).
+2. Regenerate the canonical wrapper so future sessions can use `.\gradlew.bat`:
+   run the same gradle.bat with task `wrapper --gradle-version 8.9` in the project, commit the
+   regenerated files. If `gradlew` still tries to download the dist and fails, keep using the
+   direct path (documented in §11) - or allow java.exe through the firewall.
+3. Enable USB debugging on the S24 -> `adb devices` -> `adb install -r app\build\outputs\apk\debug\app-debug.apk`
+   -> confirm it launches with 4 tabs + bottom nav.
 4. Start **Phase 1**: hw/ layer + Diagnostics screen first (spec §17 says build Diagnostics before any UI).
 5. Add S24 entry (`device: "s24"`, `model: "SM-S921*"`, designMah 4000) to `assets/battery_db.json`.
 
@@ -179,11 +197,19 @@ adb shell dumpsys battery
 
 ## 11. Known issues / gotchas
 
+- **java.exe on this machine cannot reach services.gradle.org** (PowerShell can; no proxy set;
+  likely Windows Firewall blocking java.exe). Google Maven + Maven Central work fine from Java.
+  Workaround: invoke Gradle directly:
+  `& "$env:USERPROFILE\.gradle\install\gradle-8.9\bin\gradle.bat" <tasks>` (zip already downloaded).
+- Harmless build warning: "This version only understands SDK XML versions up to 3..." - cmdline-tools
+  newer than AGP expects; ignore.
 - `ACTION_BATTERY_CHANGED` cannot go in the manifest - runtime registration only (spec §4 note).
 - Power math MUST use Long: `powerMw = voltageMv * currentUa / 1_000_000L` (Int overflows).
 - Thermal headroom: rate-limit to one call per 2 s or it silently returns NaN (spec §1.3).
 - Never smooth stored values - EMA is display-only (spec §8.4).
 - PowerShell 5.1: no `&&`; use `if ($?) { }` chaining.
+- Kotlin compile errors print as noisy PowerShell "NativeCommandError" walls - the real message
+  is the `e: file:///...` lines.
 
 ## 12. Conventions
 
