@@ -85,7 +85,11 @@ Legend: `[x]` done, `[~]` partial, `[ ]` not started
 - [x] Manifest per spec §4 + stub classes it references (AmpereApp, MainActivity, MonitorService, receivers)
 - [x] Theme (Color/Theme/Type/Palette from §6) + adaptive launcher icon (no PNGs needed at minSdk 29)
 - [x] Nav graph (Routes, AmpereNavHost) + 4 stub screens + AppContainer placeholder
-- [~] First successful `:app:assembleDebug` - NOT yet green. Progress: deps resolve, resources+manifest process fine; compile failed on a missing Color import in Palette.kt (fixed after last build, unverified). Expect possible 1-2 more small compile errors.
+- [x] First successful `:app:assembleDebug` - GREEN (Session 2). Palette.kt Color import was the only
+  compile error. Debug APK at `app\build\outputs\apk\debug\app-debug.apk` (~57 MB), not yet on a device.
+- [~] Wrapper still not canonical - `gradlew.bat` cannot download the dist (firewall blocks java.exe);
+  keep using the direct gradle.bat path (§11) until wrapper is regenerated or firewall fixed.
+  Attempted `wrapper --gradle-version 8.9` in Session 2 - fails on same network block.
 
 ### Phase 1 - hw/ layer + Diagnostics screen FIRST
 - [ ] BatteryIntentSource, BatteryPropertySource, ThermalSource, SysfsReader
@@ -123,6 +127,20 @@ Legend: `[x]` done, `[~]` partial, `[ ]` not started
 
 ## 8. Session log
 
+### Session 2 - Tue Aug 25 2026
+**Done:**
+- Rebuilt `:app:assembleDebug` with the direct gradle-8.9 binary: **BUILD SUCCESSFUL in 59s**
+  (35 tasks). Palette.kt Color import was the last remaining compile error - Phase 0 is code-complete.
+- Verified APK exists: `app\build\outputs\apk\debug\app-debug.apk` (56.9 MB, built Aug 24).
+- Updated this file; committed and pushed.
+
+**Decisions:**
+- Stopped after wrap-up per user: no Phase 1 work today ("we do everything tomorrow").
+- Wrapper regeneration deferred again - not blocking while the direct binary path works.
+
+**Blockers / notes:**
+- None new. Same standing gotchas in §11. Device install + wrapper regen are first up next session.
+
 ### Session 1 - Sun Aug 23 2026
 **Done:**
 - Read full spec (769 lines). Understood scope, phases, hard rules.
@@ -159,17 +177,18 @@ Legend: `[x]` done, `[~]` partial, `[ ]` not started
 
 ## 9. Next steps (resume here)
 
-1. Rebuild to green using the direct Gradle binary:
-   `& "$env:USERPROFILE\.gradle\install\gradle-8.9\bin\gradle.bat" :app:assembleDebug`
-   Fix whatever compile errors remain (Palette.kt Color import already fixed post-build).
-2. Regenerate the canonical wrapper so future sessions can use `.\gradlew.bat`:
-   run the same gradle.bat with task `wrapper --gradle-version 8.9` in the project, commit the
-   regenerated files. If `gradlew` still tries to download the dist and fails, keep using the
-   direct path (documented in §11) - or allow java.exe through the firewall.
-3. Enable USB debugging on the S24 -> `adb devices` -> `adb install -r app\build\outputs\apk\debug\app-debug.apk`
+1. (Optional, quick) Regenerate the canonical wrapper so future sessions can use `.\gradlew.bat`:
+   run `& "$env:USERPROFILE\.gradle\install\gradle-8.9\bin\gradle.bat" wrapper --gradle-version 8.9`
+   in the project, commit the regenerated files. If `gradlew` still tries to download the dist and
+   fails, keep using the direct path (§11) - or allow java.exe through the firewall.
+2. Enable USB debugging on the S24 -> `adb devices` -> `adb install -r app\build\outputs\apk\debug\app-debug.apk`
    -> confirm it launches with 4 tabs + bottom nav.
-4. Start **Phase 1**: hw/ layer + Diagnostics screen first (spec §17 says build Diagnostics before any UI).
-5. Add S24 entry (`device: "s24"`, `model: "SM-S921*"`, designMah 4000) to `assets/battery_db.json`.
+3. Start **Phase 1**: hw/ layer + Diagnostics screen first (spec §17 says build Diagnostics before any UI).
+   - BatteryIntentSource, BatteryPropertySource, ThermalSource, SysfsReader
+   - DesignCapacityResolver (6-step chain, spec §1.4), DeviceDb (assets/battery_db.json)
+   - Diagnostics screen per spec §12.5; verify every hardware source on the real S24 via adb.
+4. Add S24 entry (`device: "s24"`, `model: "SM-S921*"`, designMah 4000) to `assets/battery_db.json`.
+5. Phase 2 after that: UnitCalibrator + PowerCalc + CalibrationRepository (spec §8.3).
 
 ## 10. Build & test commands
 
