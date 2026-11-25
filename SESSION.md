@@ -28,8 +28,10 @@ Ranks, Daily goals, World ranking, Profile. Plus onboarding, background service,
 - Store assets in `store/`, `PRIVACY.md`, signing config, baseline profile rules
 
 ### Verified (25 Nov 2026)
-- 31 unit tests pass; lint 0 errors (11 warnings); `bundleRelease` builds a 4.7 MB unsigned .aab; R8 APK 3.5 MB
-  (all re-run in session 4 on commit 36dff6d, before the fixes in section 3)
+- On the final code (session 4): 31 unit tests pass, lint 0 errors (11 warnings), unsigned .aab 4.7 MB, R8 APK 3.5 MB,
+  16 KB page alignment ok, no internet permission in the standard build
+- Emulator API 36 (session 4): tracking and countdown survive a reboot, Quick Settings tile shows live values, landscape
+  onboarding, "Battery was replaced" reset, switches and sliders exposed to TalkBack, widget layout renders
 - Emulator API 36 and API 29: launch, all tabs, no crash
 - 4,000-event monkey run on the R8 build: no crash, no ANR
 - Background service, ongoing notification, charge-target and heat alerts fired correctly
@@ -41,10 +43,10 @@ Ranks, Daily goals, World ranking, Profile. Plus onboarding, background service,
 - **Never run on a real phone.** Current unit/sign, charge counter, cycle count and charger offer must be checked on the S24
 - `supabase.sql` has not been run on a real database
 - No upload key yet, so the .aab that builds is unsigned
-- Boot-restart of tracking, widget and tile were written but not exercised on a device
-- "0.5 to 1% battery a day" in the UI is an estimate, not measured. Measure it or soften the text
+- Widget was rendered in a test, not placed on a real launcher. API 29 and the monkey run predate the session 4 fixes
+- Background battery cost has not been measured (the app no longer claims a figure)
 - Device specs were entered from memory of published figures: spot-check `tools/specs.txt`
-- TalkBack pass, landscape and tablet not checked
+- Full TalkBack walk-through and tablets not checked
 
 ## 3. Next steps (resume here)
 
@@ -60,12 +62,12 @@ Ranks, Daily goals, World ranking, Profile. Plus onboarding, background service,
 - [x] TalkBack: Toggle rows should use toggleable; Ruler needs progress semantics and a setProgress action
 - [x] Replace the unmeasured "0.5 to 1% battery a day" text (SettingsScreen twice)
 
-### Then
-1. Emulator: widget, tile, reboot restart, landscape, TalkBack semantics
-2. Rebuild tests + lint + .aab, commit, push
-3. Owner: install the preview APK on the S24, compare Live with a USB meter, read Phone > Raw diagnostics
-4. Owner: record 3 charges of 25%+, check Health becomes "Measured"; measure 24 h background drain
-5. Owner: decide on the live leaderboard (section 6), then publish (section 8)
+### Left, all needing the owner
+1. Install `app/build/outputs/apk/preview/app-preview.apk` on the S24. Compare Live with a USB meter, read Phone > Raw diagnostics
+2. Record 3 charges of 25%+, check Health becomes "Measured"; measure 24 h background drain; place the widget
+3. Spot-check `tools/specs.txt`
+4. Decide on the live leaderboard (section 6)
+5. Upload key, Play account, publish (section 8)
 
 ## 4. Build
 
@@ -169,7 +171,8 @@ Reports hide an entry after five. Free Supabase projects pause when unused.
 
 ## 10. Session log
 - **25 Nov 2026 (session 4)**: verified release bundle, R8, tests and lint on 36dff6d; reviewed the code and listed the
-  fixes in section 3. All eight are fixed and unit-tested (31 pass); emulator checks come next.
+  fixes in section 3. Fixed all eight plus "Full in 0s" at 100%; verified on the API 36
+  emulator and rebuilt the release bundle.
 - **25 Nov 2026 (session 3)**: skeleton became the full 1.0.0 app. Tests caught device-name collisions (CMF Phone 1 /
   Nothing Phone (1), Pixel 4a / 4a 5G); emulator testing caught bogus records after level jumps, 2.2 MB slow PDFs and
   exports cancelled by closing the sheet. All fixed. Stopped early on request; see "NOT done" above.
