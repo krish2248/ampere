@@ -28,7 +28,8 @@ Ranks, Daily goals, World ranking, Profile. Plus onboarding, background service,
 - Store assets in `store/`, `PRIVACY.md`, signing config, baseline profile rules
 
 ### Verified (25 Nov 2026)
-- 30 unit tests pass on the final code
+- 30 unit tests pass; lint 0 errors (11 warnings); `bundleRelease` builds a 4.7 MB unsigned .aab; R8 APK 3.5 MB
+  (all re-run in session 4 on commit 36dff6d, before the fixes in section 3)
 - Emulator API 36 and API 29: launch, all tabs, no crash
 - 4,000-event monkey run on the R8 build: no crash, no ANR
 - Background service, ongoing notification, charge-target and heat alerts fired correctly
@@ -39,19 +40,32 @@ Ranks, Daily goals, World ranking, Profile. Plus onboarding, background service,
 ### NOT done / NOT verified
 - **Never run on a real phone.** Current unit/sign, charge counter, cycle count and charger offer must be checked on the S24
 - `supabase.sql` has not been run on a real database
-- After the last edits (ETA warm-up, "Grade so far" at 5%, demo name) tests and `assembleDebug` pass; lint and the R8 build were last run just before them
-- `bundleRelease` (the .aab) has not been built; no upload key exists yet
+- No upload key yet, so the .aab that builds is unsigned
 - Boot-restart of tracking, widget and tile were written but not exercised on a device
 - "0.5 to 1% battery a day" in the UI is an estimate, not measured. Measure it or soften the text
 - Device specs were entered from memory of published figures: spot-check `tools/specs.txt`
 - TalkBack pass, landscape and tablet not checked
 
 ## 3. Next steps (resume here)
-1. `gradle :app:testDebugUnitTest :app:lintRelease :app:assemblePreview`
-2. Install the preview APK on the S24, compare Live with a USB meter, read Phone > Raw diagnostics
-3. Let it record 3 charges of 25%+, check Health becomes "Measured"
-4. Measure 24 h background drain
-5. Decide on the live leaderboard (section 6), then publish (section 8)
+
+### Fixes found in session 4's code review (tick when done)
+- [ ] Engine.close(): coverage must be coveredMs / (endTs - startTs), not / durationMs. durationMs skips time the app was
+      killed, so coulomb counting can read capacity too low
+- [ ] Capacity.fromCharge: if the counter estimate is within 0.4% of design and there is no coulomb figure to check it
+      against, reject it (a gauge that mirrors design shows a false "Measured 100%"). Add a test
+- [ ] Remember Build.MODEL; if it changes (cloud restore to a new phone) clear capacity estimates
+- [ ] Settings: "Battery was replaced" row that clears estimates (dao.clearEstimates exists)
+- [ ] BootReceiver: reschedule a pending countdown (timerAt)
+- [ ] Onboarding: steps 0 and 1 overflow in landscape
+- [ ] TalkBack: Toggle rows should use toggleable; Ruler needs progress semantics and a setProgress action
+- [ ] Replace the unmeasured "0.5 to 1% battery a day" text (SettingsScreen twice)
+
+### Then
+1. Emulator: widget, tile, reboot restart, landscape, TalkBack semantics
+2. Rebuild tests + lint + .aab, commit, push
+3. Owner: install the preview APK on the S24, compare Live with a USB meter, read Phone > Raw diagnostics
+4. Owner: record 3 charges of 25%+, check Health becomes "Measured"; measure 24 h background drain
+5. Owner: decide on the live leaderboard (section 6), then publish (section 8)
 
 ## 4. Build
 
@@ -65,6 +79,9 @@ $g = (Resolve-Path "$env:USERPROFILE\.gradle\wrapper\dists\gradle-8.14.3-bin\*\g
 & $g :app:bundleRelease            # app/build/outputs/bundle/release/app-release.aab
 adb install -r app\build\outputs\apk\preview\app-preview.apk
 ```
+
+Low on memory (another build or emulator running kills the daemon)? Stop the emulator and use:
+`--no-daemon --max-workers=2 "-Dorg.gradle.parallel=false" "-Pkotlin.compiler.execution.strategy=in-process" "-Dorg.gradle.jvmargs=-Xmx2200m"`
 
 Versions: Gradle 8.14.3, AGP 8.13.2, Kotlin 2.2.21, KSP 2.2.21-2.0.4, Compose BOM 2025.12.00, Room 2.8.4,
 compile/target 36, min 29. If the Android SDK is not found, put `sdk.dir=...` in `local.properties`.
@@ -151,6 +168,8 @@ Reports hide an entry after five. Free Supabase projects pause when unused.
 - `DeviceDb.norm()` and `tools/build_assets.py norm()` must stay identical
 
 ## 10. Session log
+- **25 Nov 2026 (session 4)**: verified release bundle, R8, tests and lint on 36dff6d; reviewed the code and listed the
+  fixes in section 3. Checkpoint saved before starting them.
 - **25 Nov 2026 (session 3)**: skeleton became the full 1.0.0 app. Tests caught device-name collisions (CMF Phone 1 /
   Nothing Phone (1), Pixel 4a / 4a 5G); emulator testing caught bogus records after level jumps, 2.2 MB slow PDFs and
   exports cancelled by closing the sheet. All fixed. Stopped early on request; see "NOT done" above.
