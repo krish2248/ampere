@@ -29,6 +29,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Badge
+import androidx.compose.material.icons.rounded.BatteryFull
 import androidx.compose.material.icons.rounded.BatterySaver
 import androidx.compose.material.icons.rounded.DeleteForever
 import androidx.compose.material.icons.rounded.Description
@@ -106,6 +107,7 @@ fun SettingsScreen(c: Container, s: Settings, nav: Nav) {
     var export by rememberSaveable { mutableStateOf(false) }
     var wipe by rememberSaveable { mutableStateOf(false) }
     var design by rememberSaveable { mutableStateOf(false) }
+    var replaced by rememberSaveable { mutableStateOf(false) }
     fun <X> set(k: Preferences.Key<X>, v: X) {
         scope.launch { c.prefs.edit { it[k] = v } }
     }
@@ -113,7 +115,7 @@ fun SettingsScreen(c: Container, s: Settings, nav: Nav) {
         item { Section("Tracking") }
         item {
             Panel {
-                ToggleRow("Background tracking", "Records charges, records, health and goals with the app closed. Uses a quiet notification and about 0.5 to 1% battery a day.", s.monitoring, track)
+                ToggleRow("Background tracking", "Records charges, records, health and goals with the app closed. Uses a quiet notification and samples slowly, never keeping the phone awake.", s.monitoring, track)
                 Hairline()
                 NavRow("Keep it alive", "Set Ampere to unrestricted so the phone does not stop it", Icons.Rounded.BatterySaver) { openBatterySettings(ctx) }
                 if (s.monitoring) {
@@ -155,6 +157,8 @@ fun SettingsScreen(c: Container, s: Settings, nav: Nav) {
                 Hairline()
                 NavRow("Original capacity", null, Icons.Rounded.Description, c.design.resolve(s.manualDesignMah).mah?.let { "${Fmt.int(it)} mAh" } ?: "Not set") { design = true }
                 Hairline()
+                NavRow("Battery was replaced", "Start health measurement again", Icons.Rounded.BatteryFull) { replaced = true }
+                Hairline()
                 NavRow("Recalibrate current sensor", "Use this if charging shows as draining", Icons.Rounded.Refresh) {
                     c.engine.recalibrate()
                 }
@@ -188,6 +192,18 @@ fun SettingsScreen(c: Container, s: Settings, nav: Nav) {
     }
     if (export) ExportSheet(c, s, d) { export = false }
     if (design) DesignDialog(c, s) { design = false }
+    if (replaced) AlertDialog(
+        onDismissRequest = { replaced = false }, containerColor = Amp.c.surface,
+        title = { T("Start health again?", Type.section) },
+        text = { T("Clears the capacity measurements of the old battery. Sessions, records and ranks stay.", Type.body, Amp.c.dim) },
+        confirmButton = {
+            TextButton({
+                c.resetHealth()
+                replaced = false
+            }) { T("Start again", Type.strong) }
+        },
+        dismissButton = { TextButton({ replaced = false }) { T("Cancel", Type.strong, Amp.c.dim) } },
+    )
     if (wipe) AlertDialog(
         onDismissRequest = { wipe = false }, containerColor = Amp.c.surface,
         title = { T("Delete all data?", Type.section) },
@@ -271,11 +287,12 @@ fun Onboarding(c: Container, s: Settings) {
             Column(Modifier.fillMaxSize().padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                 when (p) {
                     0 -> {
-                        Spacer(Modifier.weight(0.5f))
-                        TickDial(l.level, 20f, true, Amp.c.charge, Modifier.fillMaxWidth(0.72f), desc = "Battery ${l.level} percent") {
-                            T(if (l.ready) "${l.level}%" else "", Type.big)
+                        // The dial takes whatever height is left, so the button stays on screen in landscape.
+                        Box(Modifier.weight(1f).fillMaxWidth().padding(vertical = 12.dp), Alignment.Center) {
+                            TickDial(l.level, 20f, true, Amp.c.charge, Modifier.widthIn(max = 300.dp), desc = "Battery ${l.level} percent") {
+                                T(if (l.ready) "${l.level}%" else "", Type.big)
+                            }
                         }
-                        Spacer(Modifier.weight(0.4f))
                         T("This is a", Type.body, Amp.c.dim)
                         T(dev?.name ?: "phone", Type.title, align = TextAlign.Center)
                         Spacer(Modifier.height(10.dp))
@@ -284,14 +301,14 @@ fun Onboarding(c: Container, s: Settings) {
                                 ?: "Let's see how its battery is really doing.",
                             Type.body, Amp.c.dim, align = TextAlign.Center,
                         )
-                        Spacer(Modifier.weight(0.6f))
+                        Spacer(Modifier.height(24.dp))
                         AmpButton("Start", Modifier.fillMaxWidth()) { step = 1 }
                     }
                     1 -> {
-                        Spacer(Modifier.weight(0.4f))
+                        Column(Modifier.weight(1f).verticalScroll(rememberScrollState()), Arrangement.Center) {
                         T("Let Ampere watch quietly", Type.title, modifier = Modifier.fillMaxWidth())
                         Spacer(Modifier.height(12.dp))
-                        T("Real capacity, charge records and goals come from watching whole charges. Tracking runs behind a silent notification, costs about 0.5 to 1% a day, and stays on this phone.", Type.body, Amp.c.dim)
+                        T("Real capacity, charge records and goals come from watching whole charges. Tracking runs behind a quiet notification, samples slowly so it costs little, and stays on this phone.", Type.body, Amp.c.dim)
                         Spacer(Modifier.height(28.dp))
                         listOf("Measure the true capacity", "Time every charge to the second", "Warn you about heat and bad cables", "Earn ranks, streaks and achievements").forEach {
                             Row(Modifier.fillMaxWidth().padding(vertical = 9.dp), Arrangement.spacedBy(14.dp), Alignment.CenterVertically) {
@@ -299,7 +316,8 @@ fun Onboarding(c: Container, s: Settings) {
                                 T(it, Type.body)
                             }
                         }
-                        Spacer(Modifier.weight(1f))
+                        }
+                        Spacer(Modifier.height(12.dp))
                         AmpButton("Turn on tracking", Modifier.fillMaxWidth()) {
                             track(true)
                             step = 2

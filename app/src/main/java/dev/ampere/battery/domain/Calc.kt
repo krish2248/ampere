@@ -161,7 +161,8 @@ object Capacity {
         val c = counter?.takeIf(ok)
         val q = coulomb?.takeIf(ok)
         // Some gauges just multiply percent by the design figure. That would always say 100 % health.
-        val mirrored = c != null && designUah != null && abs(c / designUah - 1) < 0.004f && q != null && abs(q / c - 1) > 0.04f
+        // Without current to check against, a figure this close to design proves nothing, so it is not used.
+        val mirrored = c != null && designUah != null && abs(c / designUah - 1) < 0.004f && (q == null || abs(q / c - 1) > 0.04f)
         val t = avgTempT / 10f
         val tempFactor = when {
             t < 20 -> 0.5f + (t - 10) / 20f

@@ -492,7 +492,9 @@ class Engine(
         val (score, ded) = Grader.grade(closed)
         dao.saveSession(closed.copy(score = if (closed.gained >= 3) score else -1, reasons = Grader.encode(ded)))
         val designUah = design.resolve(settings.value.manualDesignMah).mah?.times(1000)
-        val cover = if (closed.durationMs > 0) closed.coveredMs / closed.durationMs.toFloat() else 0f
+        // Against the wall clock: durationMs leaves out any stretch the app was not alive for.
+        val span = closed.endTs - closed.startTs
+        val cover = if (span > 0) closed.coveredMs / span.toFloat() else 0f
         Capacity.fromCharge(
             closed.startLevel, closed.endLevel, closed.startCc, estCc ?: closed.endCc,
             if (estUah >= 0) estUah else closed.chargeUah, cover, closed.minTempT, closed.peakTempT, closed.avgTempT, designUah,

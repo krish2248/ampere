@@ -151,9 +151,24 @@ class Container(val ctx: Context) {
                 it[Prefs.K.installedAt] = System.currentTimeMillis()
                 it[Prefs.K.country] = guessCountry()
             }
+            newPhoneCheck()
             housekeeping()
         }
     }
+
+    /** A cloud restore onto another phone must not bring the old battery's health with it. */
+    private suspend fun newPhoneCheck() {
+        var changed = false
+        prefs.edit {
+            val before = it[Prefs.K.phone]
+            changed = before != null && before != Build.MODEL
+            it[Prefs.K.phone] = Build.MODEL
+            if (changed) it[Prefs.K.design] = 0
+        }
+        if (changed) dao.clearEstimates()
+    }
+
+    fun resetHealth() = scope.launch { dao.clearEstimates() }
 
     private suspend fun housekeeping() {
         val now = System.currentTimeMillis()

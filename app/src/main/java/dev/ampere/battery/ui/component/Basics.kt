@@ -29,6 +29,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -61,12 +62,15 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.semantics.ProgressBarRangeInfo
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.progressBarRangeInfo
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.setProgress
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -258,10 +262,10 @@ fun Toggle(on: Boolean, modifier: Modifier = Modifier) {
 fun ToggleRow(title: String, sub: String?, on: Boolean, onChange: (Boolean) -> Unit) {
     val hap = LocalHapticFeedback.current
     Row(
-        Modifier.fillMaxWidth().clickable(role = Role.Switch) {
+        Modifier.fillMaxWidth().toggleable(on, role = Role.Switch) {
             hap.performHapticFeedback(if (on) HapticFeedbackType.ToggleOff else HapticFeedbackType.ToggleOn)
-            onChange(!on)
-        }.padding(vertical = 12.dp).semantics(mergeDescendants = true) { selected = on },
+            onChange(it)
+        }.padding(vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Column(Modifier.weight(1f)) {
@@ -308,7 +312,14 @@ fun Ruler(value: Int, range: IntRange, step: Int, color: Color, modifier: Modifi
     }
     Spacer(
         modifier.fillMaxWidth().height(48.dp).onSizeChanged { w = it.width.coerceAtLeast(1) }
-            .semantics { contentDescription = "$label $value" }
+            .semantics {
+                contentDescription = label
+                progressBarRangeInfo = ProgressBarRangeInfo(value.toFloat(), range.first.toFloat()..range.last.toFloat(), (range.last - range.first) / step - 1)
+                setProgress { v ->
+                    onChange(((v / step).roundToInt() * step).coerceIn(range.first, range.last))
+                    true
+                }
+            }
             .pointerInput(range) { detectTapGestures { send(at(it.x)) } }
             .pointerInput(range) {
                 detectHorizontalDragGestures { ch, _ ->

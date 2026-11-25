@@ -107,6 +107,12 @@ class CalcTest {
         assertEquals(3_500_000, r.uah)
     }
 
+    @Test fun capacity_rejects_an_unverifiable_perfect_gauge() {
+        assertNull(Capacity.fromCharge(20, 80, 800_000, 3_200_000, 0f, 0f, 280, 340, 310, 4_000_000))
+        assertNotNull(Capacity.fromCharge(20, 80, 800_000, 3_200_000, 2_390_000f, 1f, 280, 340, 310, 4_000_000))
+        assertNotNull(Capacity.fromCharge(20, 80, 800_000, 3_000_000, 0f, 0f, 280, 340, 310, 4_000_000))
+    }
+
     @Test fun weighted_median_ignores_one_outlier() {
         val v = Capacity.weightedMedian(listOf(3_500_000 to 1f, 3_520_000 to 1f, 3_480_000 to 1f, 2_000_000 to 0.3f))
         assertEquals(3_500_000, v)

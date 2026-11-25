@@ -78,6 +78,7 @@ class Prefs(private val ctx: Context) {
         val curFp = stringPreferencesKey("curFp")
         val installedAt = longPreferencesKey("installedAt")
         val timerAt = longPreferencesKey("timerAt")
+        val phone = stringPreferencesKey("phone")
         val boardToken = stringPreferencesKey("boardToken")
         val boardOptIn = booleanPreferencesKey("boardOptIn")
     }

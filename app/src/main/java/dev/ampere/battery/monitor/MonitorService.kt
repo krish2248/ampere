@@ -189,7 +189,10 @@ class BootReceiver : BroadcastReceiver() {
         val pending = goAsync()
         c.scope.launch {
             try {
-                if (c.loadedSettings().monitoring) MonitorService.start(ctx)
+                val s = c.loadedSettings()
+                if (s.monitoring) MonitorService.start(ctx)
+                // Alarms do not survive a reboot.
+                if (s.timerAt > System.currentTimeMillis()) TimerReceiver.schedule(ctx, s.timerAt)
             } finally {
                 pending.finish()
             }

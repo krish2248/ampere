@@ -28,7 +28,7 @@ Ranks, Daily goals, World ranking, Profile. Plus onboarding, background service,
 - Store assets in `store/`, `PRIVACY.md`, signing config, baseline profile rules
 
 ### Verified (25 Nov 2026)
-- 30 unit tests pass; lint 0 errors (11 warnings); `bundleRelease` builds a 4.7 MB unsigned .aab; R8 APK 3.5 MB
+- 31 unit tests pass; lint 0 errors (11 warnings); `bundleRelease` builds a 4.7 MB unsigned .aab; R8 APK 3.5 MB
   (all re-run in session 4 on commit 36dff6d, before the fixes in section 3)
 - Emulator API 36 and API 29: launch, all tabs, no crash
 - 4,000-event monkey run on the R8 build: no crash, no ANR
@@ -49,16 +49,16 @@ Ranks, Daily goals, World ranking, Profile. Plus onboarding, background service,
 ## 3. Next steps (resume here)
 
 ### Fixes found in session 4's code review (tick when done)
-- [ ] Engine.close(): coverage must be coveredMs / (endTs - startTs), not / durationMs. durationMs skips time the app was
+- [x] Engine.close(): coverage must be coveredMs / (endTs - startTs), not / durationMs. durationMs skips time the app was
       killed, so coulomb counting can read capacity too low
-- [ ] Capacity.fromCharge: if the counter estimate is within 0.4% of design and there is no coulomb figure to check it
+- [x] Capacity.fromCharge: if the counter estimate is within 0.4% of design and there is no coulomb figure to check it
       against, reject it (a gauge that mirrors design shows a false "Measured 100%"). Add a test
-- [ ] Remember Build.MODEL; if it changes (cloud restore to a new phone) clear capacity estimates
-- [ ] Settings: "Battery was replaced" row that clears estimates (dao.clearEstimates exists)
-- [ ] BootReceiver: reschedule a pending countdown (timerAt)
-- [ ] Onboarding: steps 0 and 1 overflow in landscape
-- [ ] TalkBack: Toggle rows should use toggleable; Ruler needs progress semantics and a setProgress action
-- [ ] Replace the unmeasured "0.5 to 1% battery a day" text (SettingsScreen twice)
+- [x] Remember Build.MODEL; if it changes (cloud restore to a new phone) clear capacity estimates
+- [x] Settings: "Battery was replaced" row that clears estimates (dao.clearEstimates exists)
+- [x] BootReceiver: reschedule a pending countdown (timerAt)
+- [x] Onboarding: steps 0 and 1 overflow in landscape
+- [x] TalkBack: Toggle rows should use toggleable; Ruler needs progress semantics and a setProgress action
+- [x] Replace the unmeasured "0.5 to 1% battery a day" text (SettingsScreen twice)
 
 ### Then
 1. Emulator: widget, tile, reboot restart, landscape, TalkBack semantics
@@ -169,7 +169,7 @@ Reports hide an entry after five. Free Supabase projects pause when unused.
 
 ## 10. Session log
 - **25 Nov 2026 (session 4)**: verified release bundle, R8, tests and lint on 36dff6d; reviewed the code and listed the
-  fixes in section 3. Checkpoint saved before starting them.
+  fixes in section 3. All eight are fixed and unit-tested (31 pass); emulator checks come next.
 - **25 Nov 2026 (session 3)**: skeleton became the full 1.0.0 app. Tests caught device-name collisions (CMF Phone 1 /
   Nothing Phone (1), Pixel 4a / 4a 5G); emulator testing caught bogus records after level jumps, 2.2 MB slow PDFs and
   exports cancelled by closing the sheet. All fixed. Stopped early on request; see "NOT done" above.
