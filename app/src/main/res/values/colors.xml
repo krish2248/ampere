@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ampere_bg">#FF0C0D10</color>
+    <color name="ampere_bg">#FF0B0C0E</color>
+    <color name="window_bg">#FFF5F6F8</color>
+    <color name="w_bg">#FFFFFFFF</color>
+    <color name="w_text">#FF14161A</color>
+    <color name="w_dim">#FF626973</color>
+    <color name="w_track">#FFE3E6EB</color>
+    <color name="w_accent">#FF12875A</color>
 </resources>

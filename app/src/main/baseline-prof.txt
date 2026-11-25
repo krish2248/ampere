@@ -1,0 +1,5 @@
+HSPLdev/ampere/battery/**->**(**)**
+Ldev/ampere/battery/**;
+HSPLandroidx/compose/animation/core/**->**(**)**
+HSPLandroidx/compose/foundation/pager/**->**(**)**
+HSPLandroidx/compose/foundation/lazy/**->**(**)**

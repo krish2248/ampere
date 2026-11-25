@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="window_bg">#FF0B0C0E</color>
+    <color name="w_bg">#FF15181C</color>
+    <color name="w_text">#FFF2F3F5</color>
+    <color name="w_dim">#FF979DA8</color>
+    <color name="w_track">#FF2A2F36</color>
+    <color name="w_accent">#FF5FE0A3</color>
+</resources>

@@ -30,3 +30,6 @@ keystore.properties
 *.jks
 *.keystore
 google-services.json
+
+# Kotlin compiler sessions
+.kotlin/

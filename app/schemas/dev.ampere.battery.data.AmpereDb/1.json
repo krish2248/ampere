@@ -1,0 +1,570 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "9d882568d5ffcaf65db63fef0b0bf55a",
+    "entities": [
+      {
+        "tableName": "samples",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `ts` INTEGER NOT NULL, `level` INTEGER NOT NULL, `mv` INTEGER, `ua` INTEGER, `cc` INTEGER, `tempT` INTEGER NOT NULL, `charging` INTEGER NOT NULL, `plug` INTEGER NOT NULL, `thermal` INTEGER NOT NULL, `screenOn` INTEGER NOT NULL, `sessionId` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ts",
+            "columnName": "ts",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mv",
+            "columnName": "mv",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "ua",
+            "columnName": "ua",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "cc",
+            "columnName": "cc",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "tempT",
+            "columnName": "tempT",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "charging",
+            "columnName": "charging",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "plug",
+            "columnName": "plug",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thermal",
+            "columnName": "thermal",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "screenOn",
+            "columnName": "screenOn",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_samples_ts",
+            "unique": false,
+            "columnNames": [
+              "ts"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_samples_ts` ON `${TABLE_NAME}` (`ts`)"
+          },
+          {
+            "name": "index_samples_sessionId",
+            "unique": false,
+            "columnNames": [
+              "sessionId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_samples_sessionId` ON `${TABLE_NAME}` (`sessionId`)"
+          }
+        ]
+      },
+      {
+        "tableName": "sessions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `kind` INTEGER NOT NULL, `startTs` INTEGER NOT NULL, `endTs` INTEGER NOT NULL, `startLevel` INTEGER NOT NULL, `endLevel` INTEGER NOT NULL, `startCc` INTEGER, `endCc` INTEGER, `plug` INTEGER NOT NULL, `peakMw` INTEGER NOT NULL, `avgMw` INTEGER NOT NULL, `peakTempT` INTEGER NOT NULL, `avgTempT` INTEGER NOT NULL, `minTempT` INTEGER NOT NULL, `minMv` INTEGER NOT NULL, `maxMv` INTEGER NOT NULL, `energyMwh` REAL NOT NULL, `chargeUah` REAL NOT NULL, `durationMs` INTEGER NOT NULL, `coveredMs` INTEGER NOT NULL, `screenOnMs` INTEGER NOT NULL, `uahOn` REAL NOT NULL, `uahOff` REAL NOT NULL, `heat40Ms` INTEGER NOT NULL, `heat43Ms` INTEGER NOT NULL, `holdMs` INTEGER NOT NULL, `thermalMax` INTEGER NOT NULL, `marks` TEXT NOT NULL, `score` INTEGER NOT NULL, `reasons` TEXT NOT NULL, `negotiatedMw` INTEGER NOT NULL, `unstable` INTEGER NOT NULL, `bootCount` INTEGER NOT NULL, `open` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kind",
+            "columnName": "kind",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startTs",
+            "columnName": "startTs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endTs",
+            "columnName": "endTs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startLevel",
+            "columnName": "startLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "endLevel",
+            "columnName": "endLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startCc",
+            "columnName": "startCc",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "endCc",
+            "columnName": "endCc",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "plug",
+            "columnName": "plug",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "peakMw",
+            "columnName": "peakMw",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "avgMw",
+            "columnName": "avgMw",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "peakTempT",
+            "columnName": "peakTempT",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "avgTempT",
+            "columnName": "avgTempT",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "minTempT",
+            "columnName": "minTempT",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "minMv",
+            "columnName": "minMv",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maxMv",
+            "columnName": "maxMv",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "energyMwh",
+            "columnName": "energyMwh",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "chargeUah",
+            "columnName": "chargeUah",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "durationMs",
+            "columnName": "durationMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "coveredMs",
+            "columnName": "coveredMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "screenOnMs",
+            "columnName": "screenOnMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uahOn",
+            "columnName": "uahOn",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uahOff",
+            "columnName": "uahOff",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "heat40Ms",
+            "columnName": "heat40Ms",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "heat43Ms",
+            "columnName": "heat43Ms",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "holdMs",
+            "columnName": "holdMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thermalMax",
+            "columnName": "thermalMax",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "marks",
+            "columnName": "marks",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "score",
+            "columnName": "score",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reasons",
+            "columnName": "reasons",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "negotiatedMw",
+            "columnName": "negotiatedMw",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "unstable",
+            "columnName": "unstable",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bootCount",
+            "columnName": "bootCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "open",
+            "columnName": "open",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_sessions_startTs",
+            "unique": false,
+            "columnNames": [
+              "startTs"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_sessions_startTs` ON `${TABLE_NAME}` (`startTs`)"
+          },
+          {
+            "name": "index_sessions_kind",
+            "unique": false,
+            "columnNames": [
+              "kind"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_sessions_kind` ON `${TABLE_NAME}` (`kind`)"
+          }
+        ]
+      },
+      {
+        "tableName": "estimates",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `ts` INTEGER NOT NULL, `uah` INTEGER NOT NULL, `weight` REAL NOT NULL, `method` TEXT NOT NULL, `spanPct` INTEGER NOT NULL, `tempC` REAL NOT NULL, `sessionId` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ts",
+            "columnName": "ts",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uah",
+            "columnName": "uah",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weight",
+            "columnName": "weight",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "method",
+            "columnName": "method",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "spanPct",
+            "columnName": "spanPct",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tempC",
+            "columnName": "tempC",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sessionId",
+            "columnName": "sessionId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_estimates_ts",
+            "unique": false,
+            "columnNames": [
+              "ts"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_estimates_ts` ON `${TABLE_NAME}` (`ts`)"
+          }
+        ]
+      },
+      {
+        "tableName": "days",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`day` INTEGER NOT NULL, `chargedPct` INTEGER NOT NULL, `drainedPct` INTEGER NOT NULL, `charges` INTEGER NOT NULL, `minLevel` INTEGER NOT NULL, `maxLevel` INTEGER NOT NULL, `maxTempT` INTEGER NOT NULL, `screenOnMs` INTEGER NOT NULL, `heat40Ms` INTEGER NOT NULL, `heat43Ms` INTEGER NOT NULL, `energyInMwh` REAL NOT NULL, `energyOutMwh` REAL NOT NULL, `peakMw` INTEGER NOT NULL, `trackedMs` INTEGER NOT NULL, `maxUnplug` INTEGER NOT NULL, PRIMARY KEY(`day`))",
+        "fields": [
+          {
+            "fieldPath": "day",
+            "columnName": "day",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "chargedPct",
+            "columnName": "chargedPct",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "drainedPct",
+            "columnName": "drainedPct",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "charges",
+            "columnName": "charges",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "minLevel",
+            "columnName": "minLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maxLevel",
+            "columnName": "maxLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maxTempT",
+            "columnName": "maxTempT",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "screenOnMs",
+            "columnName": "screenOnMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "heat40Ms",
+            "columnName": "heat40Ms",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "heat43Ms",
+            "columnName": "heat43Ms",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "energyInMwh",
+            "columnName": "energyInMwh",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "energyOutMwh",
+            "columnName": "energyOutMwh",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "peakMw",
+            "columnName": "peakMw",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "trackedMs",
+            "columnName": "trackedMs",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maxUnplug",
+            "columnName": "maxUnplug",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "day"
+          ]
+        }
+      },
+      {
+        "tableName": "unlocks",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `ts` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ts",
+            "columnName": "ts",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "goal_wins",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`day` INTEGER NOT NULL, `goal` TEXT NOT NULL, PRIMARY KEY(`day`, `goal`))",
+        "fields": [
+          {
+            "fieldPath": "day",
+            "columnName": "day",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "goal",
+            "columnName": "goal",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "day",
+            "goal"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9d882568d5ffcaf65db63fef0b0bf55a')"
+    ]
+  }
+}

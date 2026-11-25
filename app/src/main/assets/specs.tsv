@@ -1,0 +1,327 @@
+galaxys9	Samsung	KR	Galaxy S9	3000	15	10	2018
+galaxys9plus	Samsung	KR	Galaxy S9+	3500	15	10	2018
+galaxynote9	Samsung	KR	Galaxy Note9	4000	15	10	2018
+galaxys10e	Samsung	KR	Galaxy S10e	3100	15	12	2019
+galaxys10	Samsung	KR	Galaxy S10	3400	15	12	2019
+galaxys10plus	Samsung	KR	Galaxy S10+	4100	15	12	2019
+galaxynote10	Samsung	KR	Galaxy Note10	3500	25	12	2019
+galaxynote10plus	Samsung	KR	Galaxy Note10+	4300	45	15	2019
+galaxys20	Samsung	KR	Galaxy S20	4000	25	15	2020
+galaxys20plus	Samsung	KR	Galaxy S20+	4500	25	15	2020
+galaxys20ultra	Samsung	KR	Galaxy S20 Ultra	5000	45	15	2020
+galaxys20fe	Samsung	KR	Galaxy S20 FE	4500	25	15	2020
+galaxynote20	Samsung	KR	Galaxy Note20	4300	25	15	2020
+galaxynote20ultra	Samsung	KR	Galaxy Note20 Ultra	4500	25	15	2020
+galaxys21	Samsung	KR	Galaxy S21	4000	25	15	2021
+galaxys21plus	Samsung	KR	Galaxy S21+	4800	25	15	2021
+galaxys21ultra	Samsung	KR	Galaxy S21 Ultra	5000	25	15	2021
+galaxys21fe	Samsung	KR	Galaxy S21 FE	4500	25	15	2022
+galaxys22	Samsung	KR	Galaxy S22	3700	25	15	2022
+galaxys22plus	Samsung	KR	Galaxy S22+	4500	45	15	2022
+galaxys22ultra	Samsung	KR	Galaxy S22 Ultra	5000	45	15	2022
+galaxys23	Samsung	KR	Galaxy S23	3900	25	15	2023
+galaxys23plus	Samsung	KR	Galaxy S23+	4700	45	15	2023
+galaxys23ultra	Samsung	KR	Galaxy S23 Ultra	5000	45	15	2023
+galaxys23fe	Samsung	KR	Galaxy S23 FE	4500	25	15	2023
+galaxys24	Samsung	KR	Galaxy S24	4000	25	15	2024
+galaxys24plus	Samsung	KR	Galaxy S24+	4900	45	15	2024
+galaxys24ultra	Samsung	KR	Galaxy S24 Ultra	5000	45	15	2024
+galaxys24fe	Samsung	KR	Galaxy S24 FE	4700	25	15	2024
+galaxys25	Samsung	KR	Galaxy S25	4000	25	15	2025
+galaxys25plus	Samsung	KR	Galaxy S25+	4900	45	15	2025
+galaxys25ultra	Samsung	KR	Galaxy S25 Ultra	5000	45	15	2025
+galaxys25edge	Samsung	KR	Galaxy S25 Edge	3900	25	15	2025
+galaxys25fe	Samsung	KR	Galaxy S25 FE	4900	45	15	2025
+galaxys26	Samsung	KR	Galaxy S26	4300	25	15	2026
+galaxys26plus	Samsung	KR	Galaxy S26+	4900	45	20	2026
+galaxys26ultra	Samsung	KR	Galaxy S26 Ultra	5000	60	25	2026
+galaxyzflip3	Samsung	KR	Galaxy Z Flip3	3300	15	10	2021
+galaxyzflip4	Samsung	KR	Galaxy Z Flip4	3700	25	15	2022
+galaxyzflip5	Samsung	KR	Galaxy Z Flip5	3700	25	15	2023
+galaxyzflip6	Samsung	KR	Galaxy Z Flip6	4000	25	15	2024
+galaxyzflip7	Samsung	KR	Galaxy Z Flip7	4300	25	15	2025
+galaxyzfold2	Samsung	KR	Galaxy Z Fold2	4500	25	11	2020
+galaxyzfold3	Samsung	KR	Galaxy Z Fold3	4400	25	11	2021
+galaxyzfold4	Samsung	KR	Galaxy Z Fold4	4400	25	15	2022
+galaxyzfold5	Samsung	KR	Galaxy Z Fold5	4400	25	15	2023
+galaxyzfold6	Samsung	KR	Galaxy Z Fold6	4400	25	15	2024
+galaxyzfold7	Samsung	KR	Galaxy Z Fold7	4400	25	15	2025
+galaxya12	Samsung	KR	Galaxy A12	5000	15	0	2020
+galaxya13	Samsung	KR	Galaxy A13	5000	15	0	2022
+galaxya14	Samsung	KR	Galaxy A14	5000	15	0	2023
+galaxya15	Samsung	KR	Galaxy A15	5000	25	0	2023
+galaxya16	Samsung	KR	Galaxy A16	5000	25	0	2024
+galaxya17	Samsung	KR	Galaxy A17	5000	25	0	2025
+galaxya21s	Samsung	KR	Galaxy A21s	5000	15	0	2020
+galaxya22	Samsung	KR	Galaxy A22	5000	15	0	2021
+galaxya23	Samsung	KR	Galaxy A23	5000	25	0	2022
+galaxya24	Samsung	KR	Galaxy A24	5000	25	0	2023
+galaxya25	Samsung	KR	Galaxy A25	5000	25	0	2023
+galaxya26	Samsung	KR	Galaxy A26	5000	25	0	2025
+galaxya31	Samsung	KR	Galaxy A31	5000	15	0	2020
+galaxya32	Samsung	KR	Galaxy A32	5000	15	0	2021
+galaxya33	Samsung	KR	Galaxy A33	5000	25	0	2022
+galaxya34	Samsung	KR	Galaxy A34	5000	25	0	2023
+galaxya35	Samsung	KR	Galaxy A35	5000	25	0	2024
+galaxya36	Samsung	KR	Galaxy A36	5000	45	0	2025
+galaxya50	Samsung	KR	Galaxy A50	4000	15	0	2019
+galaxya51	Samsung	KR	Galaxy A51	4000	15	0	2019
+galaxya52	Samsung	KR	Galaxy A52	4500	25	0	2021
+galaxya52s	Samsung	KR	Galaxy A52s	4500	25	0	2021
+galaxya53	Samsung	KR	Galaxy A53	5000	25	0	2022
+galaxya54	Samsung	KR	Galaxy A54	5000	25	0	2023
+galaxya55	Samsung	KR	Galaxy A55	5000	25	0	2024
+galaxya56	Samsung	KR	Galaxy A56	5000	45	0	2025
+galaxya70	Samsung	KR	Galaxy A70	4500	25	0	2019
+galaxya71	Samsung	KR	Galaxy A71	4500	25	0	2020
+galaxya72	Samsung	KR	Galaxy A72	5000	25	0	2021
+galaxya73	Samsung	KR	Galaxy A73	5000	25	0	2022
+galaxym31	Samsung	KR	Galaxy M31	6000	15	0	2020
+galaxym33	Samsung	KR	Galaxy M33	5000	25	0	2022
+galaxym34	Samsung	KR	Galaxy M34	6000	25	0	2023
+galaxym51	Samsung	KR	Galaxy M51	7000	25	0	2020
+galaxym52	Samsung	KR	Galaxy M52	5000	25	0	2021
+galaxym53	Samsung	KR	Galaxy M53	5000	25	0	2022
+galaxym54	Samsung	KR	Galaxy M54	6000	25	0	2023
+galaxym55	Samsung	KR	Galaxy M55	5000	45	0	2024
+galaxyf54	Samsung	KR	Galaxy F54	6000	25	0	2023
+galaxyf62	Samsung	KR	Galaxy F62	7000	25	0	2021
+pixel3	Google	US	Pixel 3	2915	18	10	2018
+pixel3xl	Google	US	Pixel 3 XL	3430	18	10	2018
+pixel3a	Google	US	Pixel 3a	3000	18	0	2019
+pixel4	Google	US	Pixel 4	2800	18	11	2019
+pixel4xl	Google	US	Pixel 4 XL	3700	18	11	2019
+pixel4a	Google	US	Pixel 4a	3140	18	0	2020
+pixel4a5g	Google	US	Pixel 4a (5G)	3885	18	0	2020
+pixel5	Google	US	Pixel 5	4080	18	12	2020
+pixel5a	Google	US	Pixel 5a	4680	18	0	2021
+pixel6	Google	US	Pixel 6	4614	21	21	2021
+pixel6pro	Google	US	Pixel 6 Pro	5003	23	23	2021
+pixel6a	Google	US	Pixel 6a	4410	18	0	2022
+pixel7	Google	US	Pixel 7	4355	20	20	2022
+pixel7pro	Google	US	Pixel 7 Pro	5000	23	23	2022
+pixel7a	Google	US	Pixel 7a	4385	18	7.5	2023
+pixel8	Google	US	Pixel 8	4575	27	18	2023
+pixel8pro	Google	US	Pixel 8 Pro	5050	30	23	2023
+pixel8a	Google	US	Pixel 8a	4492	18	7.5	2024
+pixel9	Google	US	Pixel 9	4700	27	15	2024
+pixel9pro	Google	US	Pixel 9 Pro	4700	27	21	2024
+pixel9proxl	Google	US	Pixel 9 Pro XL	5060	37	23	2024
+pixel9a	Google	US	Pixel 9a	5100	23	7.5	2025
+pixelfold	Google	US	Pixel Fold	4821	21	7.5	2023
+pixel9profold	Google	US	Pixel 9 Pro Fold	4650	21	7.5	2024
+pixel10	Google	US	Pixel 10	4970	30	15	2025
+pixel10pro	Google	US	Pixel 10 Pro	4870	30	15	2025
+pixel10proxl	Google	US	Pixel 10 Pro XL	5200	45	25	2025
+pixel10profold	Google	US	Pixel 10 Pro Fold	5015	30	15	2025
+6	OnePlus	CN	OnePlus 6	3300	20	0	2018
+6t	OnePlus	CN	OnePlus 6T	3700	20	0	2018
+7	OnePlus	CN	OnePlus 7	3700	20	0	2019
+7pro	OnePlus	CN	OnePlus 7 Pro	4000	30	0	2019
+7t	OnePlus	CN	OnePlus 7T	3800	30	0	2019
+8	OnePlus	CN	OnePlus 8	4300	30	0	2020
+8pro	OnePlus	CN	OnePlus 8 Pro	4510	30	30	2020
+8t	OnePlus	CN	OnePlus 8T	4500	65	0	2020
+9	OnePlus	CN	OnePlus 9	4500	65	15	2021
+9pro	OnePlus	CN	OnePlus 9 Pro	4500	65	50	2021
+9r	OnePlus	CN	OnePlus 9R	4500	65	0	2021
+9rt	OnePlus	CN	OnePlus 9RT	4500	65	0	2021
+10pro	OnePlus	CN	OnePlus 10 Pro	5000	80	50	2022
+10t	OnePlus	CN	OnePlus 10T	4800	150	0	2022
+10r	OnePlus	CN	OnePlus 10R	5000	80	0	2022
+11	OnePlus	CN	OnePlus 11	5000	100	0	2023
+11r	OnePlus	CN	OnePlus 11R	5000	100	0	2023
+12	OnePlus	CN	OnePlus 12	5400	100	50	2024
+12r	OnePlus	CN	OnePlus 12R	5500	100	0	2024
+13	OnePlus	CN	OnePlus 13	6000	100	50	2025
+13r	OnePlus	CN	OnePlus 13R	6000	80	0	2025
+13s	OnePlus	CN	OnePlus 13s	5850	80	0	2025
+15	OnePlus	CN	OnePlus 15	7300	120	50	2025
+open	OnePlus	CN	OnePlus Open	4805	67	0	2023
+nord	OnePlus	CN	OnePlus Nord	4115	30	0	2020
+nord2	OnePlus	CN	OnePlus Nord 2	4500	65	0	2021
+nord3	OnePlus	CN	OnePlus Nord 3	5000	80	0	2023
+nord4	OnePlus	CN	OnePlus Nord 4	5500	100	0	2024
+nordce	OnePlus	CN	OnePlus Nord CE	4500	30	0	2021
+nordce2	OnePlus	CN	OnePlus Nord CE 2	4500	65	0	2022
+nordce2lite	OnePlus	CN	OnePlus Nord CE 2 Lite	5000	33	0	2022
+nordce3	OnePlus	CN	OnePlus Nord CE 3	5000	80	0	2023
+nordce3lite	OnePlus	CN	OnePlus Nord CE 3 Lite	5000	67	0	2023
+nordce4	OnePlus	CN	OnePlus Nord CE4	5500	100	0	2024
+mi9	Xiaomi	CN	Mi 9	3300	27	20	2019
+mi10	Xiaomi	CN	Mi 10	4780	30	30	2020
+mi10pro	Xiaomi	CN	Mi 10 Pro	4500	50	30	2020
+mi11	Xiaomi	CN	Mi 11	4600	55	50	2021
+mi11ultra	Xiaomi	CN	Mi 11 Ultra	5000	67	67	2021
+mi11lite	Xiaomi	CN	Mi 11 Lite	4250	33	0	2021
+11t	Xiaomi	CN	Xiaomi 11T	5000	67	0	2021
+11tpro	Xiaomi	CN	Xiaomi 11T Pro	5000	120	0	2021
+12	Xiaomi	CN	Xiaomi 12	4500	67	50	2022
+12pro	Xiaomi	CN	Xiaomi 12 Pro	4600	120	50	2022
+12lite	Xiaomi	CN	Xiaomi 12 Lite	4300	67	0	2022
+12t	Xiaomi	CN	Xiaomi 12T	5000	120	0	2022
+12tpro	Xiaomi	CN	Xiaomi 12T Pro	5000	120	0	2022
+13	Xiaomi	CN	Xiaomi 13	4500	67	50	2023
+13pro	Xiaomi	CN	Xiaomi 13 Pro	4820	120	50	2023
+13ultra	Xiaomi	CN	Xiaomi 13 Ultra	5000	90	50	2023
+13lite	Xiaomi	CN	Xiaomi 13 Lite	4500	67	0	2023
+13t	Xiaomi	CN	Xiaomi 13T	5000	67	0	2023
+13tpro	Xiaomi	CN	Xiaomi 13T Pro	5000	120	0	2023
+14	Xiaomi	CN	Xiaomi 14	4610	90	50	2024
+14pro	Xiaomi	CN	Xiaomi 14 Pro	4880	120	50	2023
+14ultra	Xiaomi	CN	Xiaomi 14 Ultra	5000	90	80	2024
+14t	Xiaomi	CN	Xiaomi 14T	5000	67	0	2024
+14tpro	Xiaomi	CN	Xiaomi 14T Pro	5000	120	50	2024
+15	Xiaomi	CN	Xiaomi 15	5240	90	50	2025
+15ultra	Xiaomi	CN	Xiaomi 15 Ultra	5410	90	80	2025
+15t	Xiaomi	CN	Xiaomi 15T	5500	67	0	2025
+15tpro	Xiaomi	CN	Xiaomi 15T Pro	5500	90	50	2025
+redminote8	Redmi	CN	Redmi Note 8	4000	18	0	2019
+redminote8pro	Redmi	CN	Redmi Note 8 Pro	4500	18	0	2019
+redminote9	Redmi	CN	Redmi Note 9	5020	18	0	2020
+redminote9s	Redmi	CN	Redmi Note 9S	5020	18	0	2020
+redminote9pro	Redmi	CN	Redmi Note 9 Pro	5020	30	0	2020
+redminote10	Redmi	CN	Redmi Note 10	5000	33	0	2021
+redminote10pro	Redmi	CN	Redmi Note 10 Pro	5020	33	0	2021
+redminote11	Redmi	CN	Redmi Note 11	5000	33	0	2022
+redminote11pro	Redmi	CN	Redmi Note 11 Pro	5000	67	0	2022
+redminote12	Redmi	CN	Redmi Note 12	5000	33	0	2023
+redminote12pro	Redmi	CN	Redmi Note 12 Pro	5000	67	0	2023
+redminote12proplus	Redmi	CN	Redmi Note 12 Pro+	5000	120	0	2023
+redminote13	Redmi	CN	Redmi Note 13	5000	33	0	2024
+redminote13pro	Redmi	CN	Redmi Note 13 Pro	5000	67	0	2024
+redminote13proplus	Redmi	CN	Redmi Note 13 Pro+	5000	120	0	2024
+redminote14	Redmi	CN	Redmi Note 14	5500	33	0	2024
+redminote14pro	Redmi	CN	Redmi Note 14 Pro	5500	45	0	2024
+redminote14proplus	Redmi	CN	Redmi Note 14 Pro+	5110	120	0	2024
+f1	POCO	CN	POCO F1	4000	18	0	2018
+x3nfc	POCO	CN	POCO X3 NFC	5160	33	0	2020
+x3pro	POCO	CN	POCO X3 Pro	5160	33	0	2021
+x4pro	POCO	CN	POCO X4 Pro 5G	5000	67	0	2022
+x5	POCO	CN	POCO X5 5G	5000	33	0	2023
+x5pro	POCO	CN	POCO X5 Pro 5G	5000	67	0	2023
+x6	POCO	CN	POCO X6 5G	5100	67	0	2024
+x6pro	POCO	CN	POCO X6 Pro 5G	5000	67	0	2024
+x7	POCO	CN	POCO X7	5110	45	0	2025
+x7pro	POCO	CN	POCO X7 Pro	6000	90	0	2025
+f2pro	POCO	CN	POCO F2 Pro	4700	30	0	2020
+f3	POCO	CN	POCO F3	4520	33	0	2021
+f4	POCO	CN	POCO F4	4500	67	0	2022
+f4gt	POCO	CN	POCO F4 GT	4700	120	0	2022
+f5	POCO	CN	POCO F5	5000	67	0	2023
+f5pro	POCO	CN	POCO F5 Pro	5160	67	30	2023
+f6	POCO	CN	POCO F6	5000	90	0	2024
+f6pro	POCO	CN	POCO F6 Pro	5000	120	0	2024
+f7pro	POCO	CN	POCO F7 Pro	6000	90	0	2025
+f7ultra	POCO	CN	POCO F7 Ultra	5300	120	50	2025
+phone1	Nothing	GB	Phone (1)	4500	33	15	2022
+phone2	Nothing	GB	Phone (2)	4700	45	15	2023
+phone2a	Nothing	GB	Phone (2a)	5000	45	0	2024
+phone2aplus	Nothing	GB	Phone (2a) Plus	5000	50	0	2024
+phone3a	Nothing	GB	Phone (3a)	5000	50	0	2025
+phone3apro	Nothing	GB	Phone (3a) Pro	5000	50	0	2025
+phone3	Nothing	GB	Phone (3)	5150	65	15	2025
+cmfphone1	Nothing	GB	CMF Phone 1	5000	33	0	2024
+cmfphone2pro	Nothing	GB	CMF Phone 2 Pro	5000	33	0	2025
+edge20	Motorola	US	motorola edge 20	4000	30	0	2021
+edge20pro	Motorola	US	motorola edge 20 pro	4500	30	0	2021
+edge30	Motorola	US	motorola edge 30	4020	33	0	2022
+edge30pro	Motorola	US	motorola edge 30 pro	4800	68	15	2022
+edge30ultra	Motorola	US	motorola edge 30 ultra	4610	125	50	2022
+edge40	Motorola	US	motorola edge 40	4400	68	15	2023
+edge40pro	Motorola	US	motorola edge 40 pro	4600	125	15	2023
+edge50pro	Motorola	US	motorola edge 50 pro	4500	125	50	2024
+edge50ultra	Motorola	US	motorola edge 50 ultra	4500	125	50	2024
+edge50fusion	Motorola	US	motorola edge 50 fusion	5000	68	0	2024
+edge60pro	Motorola	US	motorola edge 60 pro	6000	90	15	2025
+razr40ultra	Motorola	US	motorola razr 40 ultra	3800	30	5	2023
+razr50ultra	Motorola	US	motorola razr 50 ultra	4000	45	15	2024
+motog84	Motorola	US	moto g84 5G	5000	30	0	2023
+motog85	Motorola	US	moto g85 5G	5000	30	0	2024
+xperia1iii	Sony	JP	Xperia 1 III	4500	30	11	2021
+xperia1iv	Sony	JP	Xperia 1 IV	5000	30	15	2022
+xperia1v	Sony	JP	Xperia 1 V	5000	30	15	2023
+xperia1vi	Sony	JP	Xperia 1 VI	5000	30	15	2024
+xperia1vii	Sony	JP	Xperia 1 VII	5000	30	15	2025
+xperia5iii	Sony	JP	Xperia 5 III	4500	30	0	2021
+xperia5iv	Sony	JP	Xperia 5 IV	5000	30	15	2022
+xperia5v	Sony	JP	Xperia 5 V	5000	30	15	2023
+rogphone5	ASUS	TW	ROG Phone 5	6000	65	0	2021
+rogphone6	ASUS	TW	ROG Phone 6	6000	65	0	2022
+rogphone7	ASUS	TW	ROG Phone 7	6000	65	0	2023
+rogphone8	ASUS	TW	ROG Phone 8	5500	65	15	2024
+rogphone9	ASUS	TW	ROG Phone 9	5800	65	15	2024
+zenfone8	ASUS	TW	Zenfone 8	4000	30	0	2021
+zenfone9	ASUS	TW	Zenfone 9	4300	30	0	2022
+zenfone10	ASUS	TW	Zenfone 10	4300	30	15	2023
+zenfone11ultra	ASUS	TW	Zenfone 11 Ultra	5500	65	15	2024
+findx2pro	OPPO	CN	Find X2 Pro	4260	65	0	2020
+findx3pro	OPPO	CN	Find X3 Pro	4500	65	30	2021
+findx5pro	OPPO	CN	Find X5 Pro	5000	80	50	2022
+findx6pro	OPPO	CN	Find X6 Pro	5000	100	50	2023
+findx7ultra	OPPO	CN	Find X7 Ultra	5000	100	50	2024
+findx8	OPPO	CN	Find X8	5630	80	50	2024
+findx8pro	OPPO	CN	Find X8 Pro	5910	80	50	2024
+findn2flip	OPPO	CN	Find N2 Flip	4300	44	0	2022
+findn3	OPPO	CN	Find N3	4805	67	0	2023
+reno8	OPPO	CN	Reno8 5G	4500	80	0	2022
+reno10	OPPO	CN	Reno10 5G	5000	67	0	2023
+reno11	OPPO	CN	Reno11 5G	5000	67	0	2024
+reno12	OPPO	CN	Reno12 5G	5000	80	0	2024
+reno13	OPPO	CN	Reno13 5G	5600	80	0	2025
+gt	realme	CN	realme GT	4500	65	0	2021
+gt2pro	realme	CN	realme GT 2 Pro	5000	65	0	2022
+gtneo2	realme	CN	realme GT NEO 2	5000	65	0	2021
+gt3	realme	CN	realme GT3	4600	240	0	2023
+gt6	realme	CN	realme GT 6	5500	120	0	2024
+8	realme	CN	realme 8	5000	30	0	2021
+8pro	realme	CN	realme 8 Pro	4500	50	0	2021
+9proplus	realme	CN	realme 9 Pro+	4500	60	0	2022
+10proplus	realme	CN	realme 10 Pro+ 5G	5000	67	0	2022
+11proplus	realme	CN	realme 11 Pro+ 5G	5000	100	0	2023
+12proplus	realme	CN	realme 12 Pro+ 5G	5000	67	0	2024
+13proplus	realme	CN	realme 13 Pro+ 5G	5200	80	0	2024
+14proplus	realme	CN	realme 14 Pro+ 5G	6000	80	0	2025
+x60pro	vivo	CN	X60 Pro	4200	33	0	2021
+x70proplus	vivo	CN	X70 Pro+	4500	55	50	2021
+x80pro	vivo	CN	X80 Pro	4700	80	50	2022
+x90pro	vivo	CN	X90 Pro	4870	120	50	2023
+x100	vivo	CN	X100	5000	120	0	2024
+x100pro	vivo	CN	X100 Pro	5400	100	50	2024
+x100ultra	vivo	CN	X100 Ultra	5500	80	30	2024
+x200	vivo	CN	X200	5800	90	0	2024
+x200pro	vivo	CN	X200 Pro	6000	90	30	2024
+v29	vivo	CN	V29	4600	80	0	2023
+v30	vivo	CN	V30	5000	80	0	2024
+v40	vivo	CN	V40	5500	80	0	2024
+iqoo9pro	vivo	CN	iQOO 9 Pro	4700	120	50	2022
+iqoo11	vivo	CN	iQOO 11	5000	120	0	2023
+iqoo12	vivo	CN	iQOO 12	5000	120	0	2023
+magic4pro	HONOR	CN	HONOR Magic4 Pro	4600	100	100	2022
+magic5pro	HONOR	CN	HONOR Magic5 Pro	5100	66	50	2023
+magic6pro	HONOR	CN	HONOR Magic6 Pro	5600	80	66	2024
+magic7pro	HONOR	CN	HONOR Magic7 Pro	5270	100	80	2025
+90	HONOR	CN	HONOR 90	5000	66	0	2023
+200	HONOR	CN	HONOR 200	5200	100	0	2024
+200pro	HONOR	CN	HONOR 200 Pro	5200	100	66	2024
+magicv2	HONOR	CN	HONOR Magic V2	5000	66	0	2023
+magicv3	HONOR	CN	HONOR Magic V3	5150	66	50	2024
+p20pro	Huawei	CN	HUAWEI P20 Pro	4000	22.5	0	2018
+p30	Huawei	CN	HUAWEI P30	3650	22.5	0	2019
+p30pro	Huawei	CN	HUAWEI P30 Pro	4200	40	15	2019
+p40	Huawei	CN	HUAWEI P40	3800	22.5	0	2020
+p40pro	Huawei	CN	HUAWEI P40 Pro	4200	40	27	2020
+mate20pro	Huawei	CN	HUAWEI Mate 20 Pro	4200	40	15	2018
+mate40pro	Huawei	CN	HUAWEI Mate 40 Pro	4400	66	50	2020
+p50pro	Huawei	CN	HUAWEI P50 Pro	4360	66	50	2021
+p60pro	Huawei	CN	HUAWEI P60 Pro	4815	88	50	2023
+fairphone5	Fairphone	NL	Fairphone 5	4200	30	0	2023
+lgv60thinq	LG	KR	LG V60 ThinQ 5G	5000	25	10	2020
+nokia83	Nokia	FI	Nokia 8.3 5G	4500	18	0	2020
+nokiax20	Nokia	FI	Nokia X20	4470	18	0	2021
+note30pro	Infinix	HK	Infinix NOTE 30 Pro	5000	68	15	2023
+gt20pro	Infinix	HK	Infinix GT 20 Pro	5000	45	0	2024
+zeroultra	Infinix	HK	Infinix ZERO ULTRA	4500	180	0	2022
+phantomx2pro	TECNO	HK	TECNO PHANTOM X2 Pro	5160	45	0	2022
+redmagic8pro	REDMAGIC	CN	REDMAGIC 8 Pro	6000	65	0	2022
+redmagic9pro	REDMAGIC	CN	REDMAGIC 9 Pro	6500	80	0	2023
