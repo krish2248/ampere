@@ -290,7 +290,7 @@ fun Onboarding(c: Container, s: Settings) {
                         // The dial takes whatever height is left, so the button stays on screen in landscape.
                         Box(Modifier.weight(1f).fillMaxWidth().padding(vertical = 12.dp), Alignment.Center) {
                             TickDial(l.level, 20f, true, Amp.c.charge, Modifier.widthIn(max = 300.dp), desc = "Battery ${l.level} percent") {
-                                T(if (l.ready) "${l.level}%" else "", Type.big)
+                                T(if (l.ready) "${l.level}%" else "", Type.figure)
                             }
                         }
                         T("This is a", Type.body, Amp.c.dim)

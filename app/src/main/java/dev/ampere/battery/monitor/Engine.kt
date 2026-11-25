@@ -87,6 +87,7 @@ data class Live(
 ) {
     val plugged: Boolean get() = plug != 0
     val charging: Boolean get() = power == Power.CHARGING
+    val toppingOff: Boolean get() = power == Power.CHARGING && level >= 100
     val negotiatedMw: Int? get() = Units.powerMw(negotiatedMv, negotiatedUa)
 }
 
@@ -507,7 +508,8 @@ class Engine(
     // ---- estimates -----------------------------------------------------------------------------
 
     private suspend fun estimates(el: Long, level: Int, power: Power, uaS: Int?, fullUah: Int?, plug: Int) {
-        if (power != Power.CHARGING) {
+        // At 100% a phone may still trickle for a while; there is nothing left to forecast.
+        if (power != Power.CHARGING || level >= 100) {
             etaFull = null
             eta80 = null
             etaAt = 0

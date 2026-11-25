@@ -152,7 +152,7 @@ private fun Hero(l: Live) {
         Power.BATTERY -> "On battery"
     }
     val line = when (l.power) {
-        Power.CHARGING -> l.etaFullMs?.let { "Full in ${Fmt.duration(it)}" } ?: "Measuring speed"
+        Power.CHARGING -> l.etaFullMs?.let { "Full in ${Fmt.duration(it)}" } ?: if (l.toppingOff) "Topping off" else "Measuring speed"
         Power.FULL -> "Safe to unplug"
         Power.PLUGGED_IDLE -> "The phone is holding the charge"
         Power.BATTERY -> l.leftMs?.let { "About ${Fmt.duration(it)} left" } ?: "Measuring drain"
@@ -245,7 +245,7 @@ private fun Eta(l: Live, s: Settings) {
             }
             Column(Modifier.weight(1f)) {
                 T("To 100%", Type.small, Amp.c.dim)
-                T(if (l.power == Power.FULL) "Done" else Fmt.duration(l.etaFullMs), Type.figure)
+                T(if (l.level >= 100) "Done" else Fmt.duration(l.etaFullMs), Type.figure)
                 if (l.etaFullMs != null) T(Fmt.clock(l.ts + l.etaFullMs), Type.small, Amp.c.dim)
             }
         }

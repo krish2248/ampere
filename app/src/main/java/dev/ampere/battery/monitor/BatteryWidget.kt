@@ -28,19 +28,23 @@ class BatteryWidget : AppWidgetProvider() {
             val mgr = AppWidgetManager.getInstance(ctx) ?: return
             val ids = mgr.getAppWidgetIds(ComponentName(ctx, BatteryWidget::class.java))
             if (ids.isEmpty()) return
+            runCatching { mgr.updateAppWidget(ids, views(ctx, l)) }
+        }
+
+        fun views(ctx: Context, l: Live): RemoteViews {
             val s = (ctx.applicationContext as AmpereApp).container.settings.value
             val v = RemoteViews(ctx.packageName, R.layout.widget)
             v.setTextViewText(R.id.w_level, "${l.level}%")
             v.setTextViewText(R.id.w_power, l.mwSmooth?.let { (if (l.plugged) "+" else "−") + Fmt.watts(it) + " W" } ?: Fmt.temp(l.tempC, s.fahrenheit))
             v.setTextViewText(R.id.w_detail, when (l.power) {
-                Power.CHARGING -> l.etaFullMs?.let { "Full in ${Fmt.duration(it)}" } ?: "Charging"
+                Power.CHARGING -> l.etaFullMs?.let { "Full in ${Fmt.duration(it)}" } ?: if (l.toppingOff) "Topping off" else "Charging"
                 Power.FULL -> "Full"
                 Power.PLUGGED_IDLE -> "Not charging"
                 Power.BATTERY -> l.leftMs?.let { "${Fmt.duration(it)} left" } ?: "On battery"
             })
             v.setProgressBar(R.id.w_bar, 100, l.level, false)
             v.setOnClickPendingIntent(R.id.w_root, Notifs.open(ctx))
-            runCatching { mgr.updateAppWidget(ids, v) }
+            return v
         }
     }
 }

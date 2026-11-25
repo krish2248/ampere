@@ -61,7 +61,7 @@ object Notifs {
 
     fun detail(l: Live, s: Settings): String = listOfNotNull(
         when (l.power) {
-            Power.CHARGING -> l.etaFullMs?.let { "Full in ${Fmt.duration(it)}, at ${Fmt.clock(l.ts + it)}" } ?: "Charging"
+            Power.CHARGING -> l.etaFullMs?.let { "Full in ${Fmt.duration(it)}, at ${Fmt.clock(l.ts + it)}" } ?: if (l.toppingOff) "Topping off" else "Charging"
             Power.FULL -> "Fully charged"
             Power.PLUGGED_IDLE -> "Plugged in, not charging"
             Power.BATTERY -> l.leftMs?.let { "About ${Fmt.duration(it)} left" } ?: "On battery"

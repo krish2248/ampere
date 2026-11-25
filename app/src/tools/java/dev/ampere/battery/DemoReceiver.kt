@@ -38,6 +38,18 @@ class DemoReceiver : BroadcastReceiver() {
             "battery" -> fake(c, i.getIntExtra("level", 62), -410_000, 0, 301, 0)
             "idle" -> fake(c, 85, 0, 1, 298, 0)
             "s24" -> c.scope.launch { c.previewDevice(c.devices.identify("SM-S921B", "samsung", "samsung")) }
+            "widget" -> {
+                val d = ctx.resources.displayMetrics.density
+                val host = android.widget.FrameLayout(ctx)
+                val v = dev.ampere.battery.monitor.BatteryWidget.views(ctx, c.engine.live.value).apply(ctx, host)
+                val w = (200 * d).toInt()
+                val h = (92 * d).toInt()
+                v.measure(android.view.View.MeasureSpec.makeMeasureSpec(w, 1 shl 30), android.view.View.MeasureSpec.makeMeasureSpec(h, 1 shl 30))
+                v.layout(0, 0, w, h)
+                val b = android.graphics.Bitmap.createBitmap(w, h, android.graphics.Bitmap.Config.ARGB_8888)
+                v.draw(android.graphics.Canvas(b))
+                java.io.File(ctx.cacheDir, "widget.png").outputStream().use { b.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, it) }
+            }
             "real" -> c.reader.tamper = { it }
         }
         c.engine.poke()

@@ -88,9 +88,10 @@ fun TickDial(level: Int, watts: Float, charging: Boolean, color: Color, modifier
         modifier.aspectRatio(1f).semantics(mergeDescendants = true) { contentDescription = desc }.drawBehind {
             val c = center
             val outer = size.minDimension / 2 - 2.dp.toPx()
-            val long = 22.dp.toPx()
-            val short = 15.dp.toPx()
-            val sw = 2.6.dp.toPx()
+            val k = (size.minDimension / 260.dp.toPx()).coerceAtMost(1f)
+            val long = 22.dp.toPx() * k
+            val short = 15.dp.toPx() * k
+            val sw = 2.6.dp.toPx() * k
             for (i in 0 until 100) {
                 val a = (-90f + 3.6f * i) * (PI / 180).toFloat()
                 val on = (lit - i).coerceIn(0f, 1f)
@@ -102,7 +103,7 @@ fun TickDial(level: Int, watts: Float, charging: Boolean, color: Color, modifier
                     val wave = exp(-(d * d) / 0.006f) * glow
                     col = lerp(col, hot, wave * 0.85f)
                 }
-                val len = (if (major) long else short) + head * 6.dp.toPx()
+                val len = (if (major) long else short) + head * 6.dp.toPx() * k
                 val ca = cos(a)
                 val sa = sin(a)
                 drawLine(col, Offset(c.x + (outer - len) * ca, c.y + (outer - len) * sa), Offset(c.x + outer * ca, c.y + outer * sa), sw, StrokeCap.Round)
